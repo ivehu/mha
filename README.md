@@ -1,4 +1,4 @@
-#master_ip_failover_script脚本自动mysql master
+#master_ip_failover_script脚本自动切换mysql master
 #杀掉主库（db51）mysql进程，模拟主库发生故障，进行自动failover操作
 [root@db51 ~]# pkill -9 mysqld
 
