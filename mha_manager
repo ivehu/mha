@@ -1,0 +1,28 @@
+#! /bin/sh
+# Description: Startup mha_manager
+# chkconfig: 2345 55 25
+function start(){
+	nohup /usr/local/bin/masterha_manager --conf=/etc/masterha/app1.cnf --remove_dead_master_conf --ignore_last_failover < /dev/null > /var/log/masterha/app1/manager.log 2>&1 & 
+}
+
+function stop(){
+	/usr/local/bin/masterha_stop --conf=/etc/masterha/app1.cnf
+}
+
+function status(){
+	/usr/local/bin/masterha_check_status --conf=/etc/masterha/app1.cnf
+}
+
+case "$1" in
+start)
+start
+;;
+stop)
+stop
+;;
+status)
+status
+;;
+*)
+echo "Usage: $0 start|stop"
+esac
